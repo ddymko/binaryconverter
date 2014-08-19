@@ -1,3 +1,9 @@
+/*
+*   Author: David Dymko
+*
+*
+* */
+
 $(document).ready(function(){
 
     $("#dec").keyup(function(e) {
