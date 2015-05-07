@@ -7,96 +7,79 @@
 
 $(document).ready(function() {
 
-  $('#dec').keyup(function(e) {
+  var numb, bina, octa, hexa;
+
+  $('#dec').keyup(function() {
     var decimal = $('#dec').val();
 
-    if (!isNaN(decimal)) {
-      decConvert($('#dec').val(), 'dec');
-    } else {
-      $('#hex').val('');
-      $('#bin').val('');
-      $('#oct').val('');
+    if (isEmpty(decimal)) {
+      clear();
+    }
+    else if (!isNaN(decimal)) {
+      convert(decimal);
+      $('#bin').val(bina);
+      $('#oct').val(octa);
+      $('#hex').val(hexa);
     }
   });
 
-  $('#bin').keyup(function(e) {
+  $('#bin').keyup(function() {
     var binary = $('#bin').val();
-    var num = new Number(binary);
-    var decimal = parseInt(binary, 2);
 
-    if (!isNaN(num) || !decimal === undefined) {
-
-      binConvert(decimal, 'bin');
-
-    } else {
-      $('#hex').val('');
-      $('#dec').val('');
-      $('#oct').val('');
+    if (isEmpty(binary)) {
+      clear();
+    }
+    else if (!isNaN(binary)) {
+      convert(parseInt(binary, 2));
+      $('#dec').val(numb);
+      $('#oct').val(octa);
+      $('#hex').val(hexa);
     }
   });
 
-  $('#hex').keyup(function(e) {
-    var hex = $('#hex').val();
-    var decimal;
-    decimal = parseInt(hex, 16);
-    hexConvert(decimal, 'hex');
-  });
+  $('#oct').keyup(function() {
+    var octal = $('#oct').val();
 
-  $('#oct').keyup(function(e) {
-    var oct = $('#oct').val();
-    var decimal;
-    //
-    if (!isNaN(oct)) {
-      decimal = parseInt(oct, 8);
-      octConvert(decimal, 'oct');
-    } else {
-      $('#hex').val('');
-      $('#bin').val('');
-      $('#dec').val('');
+    if (isEmpty(octal)) {
+      clear();
+    }
+    else if (!isNaN(octal)) {
+      convert(parseInt(octal, 8));
+      $('#dec').val(numb);
+      $('#bin').val(bina);
+      $('#hex').val(hexa);
     }
   });
+
+  $('#hex').keyup(function() {
+    var hexadecimal = $('#hex').val();
+
+    if (isEmpty(hexadecimal)) {
+      clear();
+    }
+    else if ((97 < String.charCodeAt(hexadecimal.toLowerCase()) < 102) || !isNaN(hexadecimal)) {
+      convert(parseInt(hexadecimal, 16));
+      $('#dec').val(numb);
+      $('#bin').val(bina);
+      $('#oct').val(octa);
+    }
+  });
+
+  function convert(val) {
+    numb = new Number(val);
+    bina = numb.toString(2);
+    octa = numb.toString(8);
+    hexa = numb.toString(16);
+  }
+
+  function isEmpty(value) {
+    return value === '';
+  }
+
+  function clear() {
+    $('#dec').val('');
+    $('#bin').val('');
+    $('#hex').val('');
+    $('#oct').val('');
+  }
 });
-
-function decConvert(value) {
-  var num = new Number(value);
-  var binary = num.toString(2);
-  var octal = num.toString(8);
-  var hexa = num.toString(16);
-
-  $('#hex').val(hexa);
-  $('#bin').val(binary);
-  $('#oct').val(octal);
-};
-
-function hexConvert(value) {
-  var num = new Number(value);
-  var binary = num.toString(2);
-  var octal = num.toString(8);
-  var hexa = parseInt(binary, 2).toString(16);
-
-  $('#dec').val(num.toString());
-  $('#bin').val(binary);
-  $('#oct').val(octal);
-};
-
-function binConvert(value) {
-  var num = new Number(value);
-  var binary = num.toString(2);
-  var octal = num.toString(8);
-  var hexa = num.toString(16);
-
-  $('#dec').val(num.toString());
-  $('#hex').val(hexa);
-  $('#oct').val(octal);
-};
-
-function octConvert(value) {
-  var num = new Number(value);
-  var binary = num.toString(2);
-  var octal = num.toString(8);
-  var hexa = parseInt(binary, 2).toString(16);
-
-  $('#dec').val(num.toString());
-  $('#bin').val(binary);
-  $('#hex').val(hexa);
-};
