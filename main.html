@@ -1,21 +1,91 @@
 <!doctype html>
 <html>
-  <head>
-    <link href="http://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
-    <link href="main.css" rel="stylesheet" charset="utf-8">
-    <script src="jquery.js"></script>
-    <script src="main.js"></script>
-  </head>
-  <body>
-    <h3 id="title">Binary Converter</h3>
-    <form id="main">
-      <label for="decimal">Decimal<input type="text" name="decimal" id="dec"></label>
-      </br>
-      <label for="binary">Binary<input type="text" name="binary" id="bin"></label>
-      </br>
-      <label for="octal">Octal<input type="text" name="octal" id="oct"></label>
-      </br>
-      <label for="hexadecimal">Hexadecimal<input type="text" name="hexadecimal" id="hex"></label>
-    </form>
-  </body>
+    <head>
+        <meta charset="utf-8"/>
+        <link href="http://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
+        <link href="main.css" rel="stylesheet">
+    </head>
+    <body>
+        <h3 id="title">Binary Converter</h3>
+        <form id="main">
+            <label for="decimal">Decimal<input type="text" name="decimal" id="dec"></label>
+            </br>
+            <label for="binary">Binary<input type="text" name="binary" id="bin"></label>
+            </br>
+            <label for="octal">Octal<input type="text" name="octal" id="oct"></label>
+            </br>
+            <label for="hexadecimal">Hexadecimal<input type="text" name="hexadecimal" id="hex"></label>
+        </form>
+        <script type="text/javascript" charset="utf-8">
+            (function() {
+                var numb, bina, octa, hexa;
+                var dec = document.getElementById('dec');
+                var bin = document.getElementById('bin');
+                var oct = document.getElementById('oct');
+                var hex = document.getElementById('hex');
+
+                dec.addEventListener('keyup', function() {
+                    if (isEmpty(this.value))
+                        clear();
+                    else if (!isNaN(this.value)) {
+                        convert(this.value);
+                        bin.value = bina;
+                        oct.value = octa;
+                        hex.value = hexa;
+                    }
+                });
+
+                bin.addEventListener('keyup', function() {
+                    if (isEmpty(this.value))
+                        clear();
+                    else if (!isNaN(this.value)) {
+                        convert(this.value);
+                        dec.value = numb;
+                        oct.value = octa;
+                        hex.value = hexa;
+                    }
+                });
+
+                oct.addEventListener('keyup', function() {
+                    if (isEmpty(this.value))
+                        clear();
+                    else if (!isNaN(this.value)) {
+                        convert(this.value);
+                        bin.value = bina;
+                        dec.value = numb;
+                        hex.value = hexa;
+                    }
+                });
+
+                hex.addEventListener('keyup', function() {
+                    if (isEmpty(this.value))
+                        clear();
+                    else if (!isNaN(this.value)) {
+                        convert(this.value);
+                        bin.value = bina;
+                        dec.value = numb;
+                        oct.value = octa;
+                    }
+                });
+
+                function convert(val) {
+                    numb = new Number(val);
+                    bina = numb.toString(2);
+                    octa = numb.toString(8);
+                    hexa = numb.toString(16);
+                }
+
+                function isEmpty(value) {
+                    return value === '';
+                }
+
+                function clear() {
+                    dec.value = '';
+                    bin.value = '';
+                    hex.value = '';
+                    oct.value = '';
+                }
+            })();
+        </script>
+    </body>
 </html>
