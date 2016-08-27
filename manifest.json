@@ -1,16 +1,11 @@
 {
-  "manifest_version": 2,
-
-  "name": "Binary Converter",
-  "description": "A simple, easy to use converter that converts decimal, binary, hexadecimal, and octal.",
-  "version": "2.0",
-  "browser_action": {
-    "default_icon": "iconfinder_calc.png",
-    "default_popup": "main.html"
-  }
-  ,
-    "background": {
-        "scripts": [ "main.js"],
-        "persistent": false
+    "manifest_version": 2,
+    "name": "Binary Converter",
+    "description": "A simple, easy to use converter that converts decimal, binary, hexadecimal, and octal.",
+    "version": "2.0",
+    "author": "Omnia Labs",
+    "browser_action": {
+        "default_icon": "iconfinder_calc.png",
+        "default_popup": "main.html"
     }
 }
