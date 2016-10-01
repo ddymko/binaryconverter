@@ -3,6 +3,10 @@
   margin: 0px;
 }
 
+*:focus {
+    outline: none;
+}
+
 body {
   width: 300px;
   background-color: #fff;
