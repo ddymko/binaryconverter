@@ -1,41 +1,21 @@
 <!doctype html>
 <html>
-  <head>
-    <title>Binary Converter</title>
-    <style>
-          body {
-        min-width: 357px;
-        overflow-x: hidden;
-      }
-    </style>
-     <script src="jquery.js"></script>
-   <script src="main.js"></script> 
-  </head>
-  
-  <body>
-    <h3>Binary Converter</h3>
-    
-      <table>
-        <tr>
-          <td><b>Decicmal:</b></td>
-          <td><input id="dec" size="64"></td>
-        </tr>
-        <tr>
-          <td><b>Binary:</b></td>
-           <td><input id="bin" size="64"></td>
-        </tr>
-        <tr>
-          <td><b>Hexadecimal:</b></td>
-          <td><input id="hex" size="64"></td>
-        </tr>
-        <tr>
-          <td><b>Octal:</b></td>
-          <td><input id="oct" size="64"></td>
-        </tr>
-     
-      </table>
-
-  
-  </body>
+    <head>
+        <meta charset="utf-8"/>
+        <link href="http://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
+        <link href="main.css" rel="stylesheet">
+        <script type="text/javascript" src="main.js"></script>
+    </head>
+    <body>
+        <h3 id="title">Binary Converter</h3>
+        <form id="main">
+            <label for="decimal">Decimal<input type="text" name="decimal" id="dec" tabindex="1"></label>
+            </br>
+            <label for="binary">Binary<input type="text" name="binary" id="bin" tabindex="2"></label>
+            </br>
+            <label for="octal">Octal<input type="text" name="octal" id="oct" tabindex="3"></label>
+            </br>
+            <label for="hexadecimal">Hexadecimal<input type="text" name="hexadecimal" id="hex" tabindex="4"></label>
+        </form>
+    </body>
 </html>
-
